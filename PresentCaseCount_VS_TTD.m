@@ -14,8 +14,11 @@ num_i = 1/m;
 % Average Time From Infection to Death
 i2d = 20;
 
+% Total Number of Cases 21 Days Prior
+num_c = solve(num_i == b*2^(1/T) - b, b);
+
 % Days Elapsed Since First Infection
-F(T) = solve(num_i/x == diff(2^(t/T), t), t) + i2d;
+F(T) = solve(num_c/x == 2^(t/T), t) + i2d;
 
 % Estimated True Case Count
 X(T) = x*2^(F(T)/T);
